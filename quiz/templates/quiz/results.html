@@ -1,0 +1,20 @@
+<h1> {{ question.question_text }} </h1>
+<p>
+    you selected: <strong> {{ selected_choice.choice_text }} </strong>
+</p>
+{% if is_correct %}
+<p style="color: green"> <strong> Correct!</strong></p>
+{% else %}
+<p style="color: red;"><strong>Incorrect</strong></p>
+<p>
+    The correct answer is :
+    <strong>
+        {% for choice in question.choice_set.all %}
+        {% if choice.correct %}
+        {{ choice.choice_text }}
+        {% endif %}
+        {% endfor %}
+    </strong>
+</p>
+{% endif %}
+
